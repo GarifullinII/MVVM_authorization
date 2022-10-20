@@ -34,11 +34,17 @@ class ViewController: UIViewController {
     }
 
     func bindViewModel() {
-        viewModel.statusText.bin { (statusText) in
+        viewModel.statusText.bin({ (statusText) in
             DispatchQueue.main.async {
                 self.label.text = statusText
             }
-        }
+        })
+        
+        viewModel.statusColor.bin({(statusColor) in
+            DispatchQueue.main.async {
+                self.label.textColor = statusColor
+            }
+        })
     }
 }
 
